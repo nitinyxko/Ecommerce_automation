@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TestCaseEntity>
+   <description></description>
+   <name>TC_Complete_Shopping_Workflow</name>
+   <tag></tag>
+   <comment></comment>
+   <recordOption>OTHER</recordOption>
+   <testCaseGuid>97dadb1d-0033-40f8-8e53-c39d1ae0f1ac</testCaseGuid>
+</TestCaseEntity>

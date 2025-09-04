@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TestCaseEntity>
+   <description></description>
+   <name>TC_User_Registration_DataDriven</name>
+   <tag></tag>
+   <comment></comment>
+   <recordOption>OTHER</recordOption>
+   <testCaseGuid>55d5b383-b717-458e-8dc1-a7cd1ad1df80</testCaseGuid>
+</TestCaseEntity>

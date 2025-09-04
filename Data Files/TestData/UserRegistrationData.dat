@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<DataFileEntity>
+   <description>firstname,lastname,email,password&#xd;
+John,Doe,john.doe1@test.com,Password123!&#xd;
+Jane,Smith,jane.smith2@test.com,Password123!&#xd;
+Mike,Johnson,mike.johnson3@test.com,Password123!&#xd;
+Sarah,Wilson,sarah.wilson4@test.com,Password123!&#xd;
+David,Brown,david.brown5@test.com,Password123!</description>
+   <name>UserRegistrationData</name>
+   <tag></tag>
+   <connectionProperties/>
+   <containsHeaders>true</containsHeaders>
+   <csvSeperator>COMMA</csvSeperator>
+   <dataFileGUID>b1777902-d737-4cdf-92fc-7d014f24778d</dataFileGUID>
+   <dataSourceUrl>C:\Users\USER\Downloads\UserRegistrationData.csv</dataSourceUrl>
+   <driver>CSV</driver>
+   <isInternalPath>false</isInternalPath>
+   <query></query>
+   <secureUserAccount>false</secureUserAccount>
+   <sheetName></sheetName>
+   <usingGlobalDBSetting>false</usingGlobalDBSetting>
+</DataFileEntity>
