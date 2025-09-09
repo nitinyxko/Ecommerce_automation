@@ -1,0 +1,33 @@
+name: Katalon Studio CI
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  run-katalon-tests:
+    runs-on: ubuntu-latest
+    container: katalonstudio/katalon   # Official Katalon Docker image
+    steps:
+      # Step 1: Checkout code
+      - name: Checkout Repository
+        uses: actions/checkout@v3
+
+      # Step 2: Run Test Suite (adjust suite name if needed)
+      - name: Run Katalon Tests
+        run: |
+          katalonc -noSplash -runMode=console \
+            -projectPath="$GITHUB_WORKSPACE/Ecommerce_automation.prj" \
+            -retry=0 \
+            -testSuitePath="Test Suites/TS_Regression" \
+            -executionProfile="default" \
+            -browserType="Chrome (headless)"
+
+      # Step 3: Upload Reports (as GitHub artifact)
+      - name: Upload Test Reports
+        uses: actions/upload-artifact@v3
+        with:
+          name: katalon-reports
+          path: Reports/**
