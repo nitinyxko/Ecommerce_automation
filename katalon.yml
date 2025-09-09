@@ -31,3 +31,11 @@ jobs:
         with:
           name: katalon-reports
           path: Reports/**
+  - name: Upload Report to Katalon TestOps
+        uses: katalon-studio/report-uploader@v0.0.8
+        env:
+          PASSWORD: ${{247e9f3b-2de1-48c0-9d6a-ef7acd814554}}
+          PROJECT_ID: ${{
+Ecommerce}}
+          TYPE: katalon
+          REPORT_PATH: Reports
