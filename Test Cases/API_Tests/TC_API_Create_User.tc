@@ -1,9 +1,45 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<TestCaseEntity>
-   <description></description>
-   <name>TC_API_Create_User</name>
-   <tag></tag>
-   <comment></comment>
-   <recordOption>OTHER</recordOption>
-   <testCaseGuid>9e37200f-22ae-4991-8378-bb63d861368f</testCaseGuid>
-</TestCaseEntity>
+import static com.kms.katalon.core.testobject.ObjectRepository.findTestObject
+import com.kms.katalon.core.webservice.keyword.WSBuiltInKeywords as WS
+import groovy.json.JsonSlurper
+import java.net.http.HttpClient
+import java.net.http.HttpRequest
+import java.net.http.HttpResponse
+import java.net.URI
+
+// Ultra-Simple API Test
+WS.comment("Starting Simple API Test")
+
+try {
+	// Create HTTP client
+	HttpClient client = HttpClient.newHttpClient()
+	
+	// Create request
+	String jsonBody = '{"name":"John Doe API","username":"johndoe_api","email":"john.api@test.com","phone":"123-456-7890"}'
+	
+	HttpRequest request = HttpRequest.newBuilder()
+		.uri(URI.create("https://jsonplaceholder.typicode.com/users"))
+		.header("Content-Type", "application/json")
+		.POST(HttpRequest.BodyPublishers.ofString(jsonBody))
+		.build()
+	
+	// Send request
+	HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString())
+	
+	// Log results
+	WS.comment("Status Code: " + response.statusCode())
+	WS.comment("Response Body: " + response.body())
+	
+	// Parse JSON
+	JsonSlurper jsonSlurper = new JsonSlurper()
+	def responseData = jsonSlurper.parseText(response.body())
+	
+	// Verify
+	assert response.statusCode() == 201
+	assert responseData.name == "John Doe API"
+	
+	WS.comment("Test Passed! Created user ID: " + responseData.id)
+	
+} catch (Exception e) {
+	WS.comment("Error: " + e.getMessage())
+	throw e
+}
